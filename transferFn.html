@@ -1,0 +1,135 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="math.js" type="text/javascript"></script>
+
+<body>
+
+</body>
+
+</html>
+<script>
+
+    function multiply(zeta, z) {
+        var result = [];
+        zeta.forEach(function (a, i) {
+            z.forEach(function (b, j) {
+                result[i + j] = (result[i + j] || 0) + a * b; //to multiply complex numbers
+            });
+        });
+        console.log(result)
+        return result
+    }
+    function Transfer_Fn_coefficients(poles_or_zeros) {
+
+        var coefficients = []
+        for (let index = 0; index < poles_or_zeros.length; index++) {
+            var pole_or_zero_unit = math.complex(-poles_or_zeros[index][0], -poles_or_zeros[index][1])
+            console.log("uuuuPP " + pole_or_zero_unit)
+            var p_or_z = -(math.multiply(pole_or_zero_unit, math.conj(pole_or_zero_unit)))
+            console.log("ppppReal " + p_or_z)
+            coefficients[index] = [p_or_z, 1];
+            console.log("ddddddddd " + coefficients[index])
+        }
+        poles_or_zeros_coeff = coefficients.reduce(multiply).reverse()
+        //console.log("poles_coeff " + poles_coeff)
+        return poles_or_zeros_coeff
+    }
+
+    zeros = Transfer_Fn_coefficients([[1, 1], [2, 0], [4, 3]])
+    console.log("zeros = " + zeros)
+
+
+    poles = Transfer_Fn_coefficients([[3, 1], [5, 2], [4, 2]])
+    console.log("poles = " + poles)
+
+
+    // x_data = [-1.0, -0.5, 0.0, 0.5, 1.0]
+    //y_data = [-0.9000413945793169, -0.8982062873471589, 1.2150505022387539, -0.09389342352877048, 1.0423856316480344]
+    //y_data = [0.09, 0.0767, 0.0767, 0.0733, 0.0717, 0.0667, 0.0683]
+    y_data = [0.09,
+        0.0767,
+        0.0767,
+        0.0733,
+        0.0717,
+        0.0667,
+        0.0683,
+        0.0917,
+        0.095,
+        0.2033
+    ]
+
+    function Difference_Equation(zeors_coeff, poles_coeff) {
+
+        let y_filter = [zeors_coeff[0] * y_data[0]];
+        let y_filter_term;
+        let y_a = [0] //[]
+        let y_b = [0]
+        for (let k = 1; k < y_data.length; k++) {
+            y_a[k] = 0
+            if (zeors_coeff.length > 0) {
+                for (let j = 0; j < zeors_coeff.length; j++) {
+                    if ((k - j) >= 0) {
+                        y_a[k] += (zeors_coeff[j] * y_data[k - j]);
+                        console.log("Zeros_coeff: " + zeors_coeff)
+                        console.log("zzzzCoefff " + zeors_coeff[j])
+                        // console.log("x to multiply = " + x_data[k - j])
+                        console.log("kkkk " + k)
+                        console.log("jjjjj " + j)
+                        console.log("the length of zeros: " + zeors_coeff.length)
+                        console.log("x data index = " + (k - j))
+                        console.log("yyyy_aaa" + y_a[k])
+                        console.log("The index of y_a " + (k))
+                    }
+                    //console.log("ZCJ " + "[" + j + "]" + zeors_coeff[j])
+                }
+                console.log("yyyy_aaaFinal " + y_a[k])
+            }
+            y_b[k] = 0
+            if (poles_coeff.length > 0) {
+                for (let i = 1; i < poles_coeff.length; i++) {
+                    if (k - i >= 0) {
+                        y_b[k] += (poles_coeff[i] * y_filter[k - i]);
+                        console.log("kkkk " + k)
+                        console.log("iiii " + i)
+                        console.log("y data index = " + (k - i))
+                        console.log("y: " + y_filter[k - i])
+                        console.log("polesssCoefff" + poles_coeff[i])
+                        console.log("yb " + y_b[k])
+
+                    }
+                }
+                console.log("ybFinal " + y_b[k])
+            }
+            y_filter_term = y_a[k] - y_b[k]
+            y_filter.push(y_filter_term);
+            console.log("y-filter " + y_filter[k])
+        }
+        // console.log(y_b)
+        // console.log(y_a)
+        // console.log(y_filter)
+        return y_filter
+    }
+
+    zeors_coeff = [1., 0.]
+    poles_coeff = [1., -0.676]
+    y_values = Difference_Equation(zeors_coeff, poles_coeff)
+
+
+    //y_values = Difference_Equation(zeors_coeff, poles_coeff)
+    console.log("y_values = " + y_values)
+    console.log("length of y_filter " + y_values.length)
+</script>
+
+Filter data = [0.09, 0.13754, 0.16967704, 0.18800167904, 0.19878913503104, 0.20108145528098303, 0.20423106376994454,
+0.22976019910848253, 0.2503178945973342, 0.3725148967477979]
+<br>
+<br>
+My_Filter data =
+[y_values =
+0.09,0.13754,0.16967704,0.18800167904,0.19878913503104,0.20108145528098303,0.20423106376994454,0.22976019910848253,0.2503178945973342,0.3725148967477979]
