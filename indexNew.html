@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://cdn.lineicons.com/2.0/LineIcons.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="flotr2.min.js"></script>
+<script src="math.js" type="text/javascript"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@300;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-2.8.3.min.js"></script>
+<link rel="stylesheet" href="style.css">
+
+<body>
+
+    <div class="page-content">
+        <div class="headerbar">Digital Filter Design</div>
+        <canvas id="zplane_polezero2" width=300 height=300></canvas>
+        <div id="zeros"></div>
+        <div id="poles"></div>
+        <table>
+            <div id="btnalign">
+                <button class="myButton" id="add-new-pole" class="btn btn-primary">Add Pole</button><br>
+                <button class="myButton" id="add-new-zero" class="btn btn-primary">Add Zero</button><br>
+                <button class="myButton" id="clear-zeros" class="btn btn-primary">clear zeros</button><br>
+                <button class="myButton" id="clear-poles" class="btn btn-primary">clear poles</button><br>
+                <button class="myButton" id="clear-all-points" class="btn btn-primary">clear All</button><br>
+                <!-- <input type="checkbox" id="conjugate">
+                <label> add Conjugates</label> -->
+            </div>
+        </table>
+
+        <!-- </div> -->
+        <div id="design_responses">
+            <div id="mag_response"></div>
+            <div id="phase_response"></div>
+        </div>
+    </div>
+
+    <div id="addingFilter">
+        <legend>Add new filter</legend>
+        <label for="a-value">a = </label>
+        <input type="text" id="real" name="real">
+        <label for="addition">+</label>
+        <input type="text" id="imaginary" name="imaginary">
+        <label for="complex-sign">i</label>
+        <input class="myButton" style="width:90px; height: 30px;" type="submit" value="Submit" id='add-new-filter'>
+    </div>
+
+    <div id="forms">
+        <form id="form2">
+            <legend>List of All-pass filters</legend>
+            <select id="menu-of-all-pass-filters" width=300 style="width:200px; height: 120px;" size="6" multiple>
+            </select>
+        </form>
+        <form id="form3">
+            <legend>List of selected all-pass filters</legend>
+            <select id="selected-elements" width=300 style="width:200px; height:120px;" size="6" multiple>
+            </select>
+
+        </form>
+    </div>
+
+    <button class="myButton" style="width:90px; height: 30px; position:absolute; left:10px; top:680px;" id='submit'>
+        Display </button>
+
+    <div>
+        <button class="myButton" style="width:90px; height: 30px; position:absolute; left:425px; top:570px" id='delete'>
+            Delete </button>
+        <button class="myButton" style="width:90px; height: 30px; position:absolute; left:425px; top:605px"
+            id='clear-all'> Clear-all </button>
+
+    </div>
+
+    <div id="allpass">
+        <div>
+            <div id="allpass_zplane_polezero2"></div>
+        </div>
+        <div>
+            <div id="allpass_phase_response"></div>
+        </div>
+    </div>
+
+
+    <div>
+        <input id="csv" type="file"><br>
+
+    </div>
+    <br>
+    <div>
+        <div id="mainSignalGraph"></div>
+    </div>
+
+    <div>
+        <div id="filtedSignalGraph"></div>
+        <div>
+            <input type="range" min="1" max="100" class="slider" id="filter_progress_slider">
+            <p><span id="slider_speed"></span></p>
+        </div>
+        <input type="button" value="Apply filter" class="allpass_orginal" id="apply-filter">
+        <input type="button" value="Phase correction" class="allpass_orginal" id="phase-correction">
+        <!-- <input type="button" value="Stop Real-Time Plot" class="allpass_orginal" id="stopSignals"> -->
+
+    </div>
+
+    </div>
+
+
+    <!-- <script src="app.js" type="text/javascript"></script> -->
+    <script src="appFF.js" type="text/javascript"></script>
+</body>
+
+</html>

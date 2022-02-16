@@ -1,0 +1,259 @@
+* {
+    margin: 0;  
+    padding: 0;
+  }
+  body {
+    font-family: "Hind Vadodara", -apple-system, BlinkMacSystemFont, Segoe UI,
+      Helvetica Neue, Arial, sans-serif;
+      height: 100%;
+      width: 100%;
+  }
+
+  .headerbar{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width: 100%;
+    height:50px;
+    background: black;
+    color:white;
+    font-size: 30px;
+    font-weight: bolder;
+    text-align: left;
+    padding: 5px 5px;
+  }
+ 
+  .main {
+    height: calc(100% - 50px);
+    display: flex;
+    flex: 1;
+  }
+ 
+  .page-content {
+    padding: 10px 10px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+ 
+  @media screen and (max-width: 100%) {
+    .page-content {
+      width: 100vw;
+    }
+  }
+  @media screen and (max-width: 100%) {
+    .header-logo {
+      display: none;
+    }
+  }  
+ #zplane_polezero2{position:absolute;
+  top:60px;
+  left:10px;
+   border:1px solid black;} 
+
+/* #allpass {
+    background-color: #e8ecef;
+    display: flex;
+    height: 1000px;
+    width: 1000px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    overflow: hidden;
+    justify-content: space-between;
+    text-align: left;
+    font-weight: bold;
+    position: absolute;
+    left:1020px;
+    top:0px;
+} */
+
+#allpass_zplane_polezero2{
+  position: absolute;
+  left:520px;
+  top:420px;
+  /* border:1px solid black; */
+}
+
+#allpass_phase_response{
+  position: absolute;
+  left:930px;
+  top:420px;
+  /* border:1px solid black; */
+}
+
+#allpass div {
+    justify-content: left;
+}
+
+.myButton{
+	background-color: black;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	font-weight:bold;
+  font-style: italic;
+	/* padding:20px 20px; */
+  text-align: center;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+  margin-bottom: 10px;
+  width:130px;
+  height:40px;
+}
+
+label{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#mag_response{
+  position: absolute;
+  left: 985px;
+  top:60px;
+  /* border:1px solid black; */
+}
+
+#phase_response{
+  position:absolute;
+  left:500px;
+  top:60px;
+  /* border:1px solid black; */
+}
+
+#btnalign{
+  position: absolute;
+  align-content: stretch;
+  left:330px;
+  top:75px;
+}
+
+#form2{
+  position: absolute;
+  left:10px;
+  top:500px;
+}
+
+#form3{
+  position: absolute;
+  left:220px;
+  top:500px;
+}
+#addingFilter{
+text-align: left;
+position: absolute;
+font-weight: bold;
+left: 10px;
+top:400px;
+}
+#allpass_orginal{
+  background-color: black;
+	border-radius:15px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:10px;
+	font-weight:bold;
+  font-style: italic;
+  text-align: center;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+  margin-bottom: 10px;
+  width:90px;
+  height:30px; 
+  position: absolute;
+}
+#csv{
+  position:absolute;
+  top:760px;
+  left:10px;
+  color: white;
+  background: black;
+  cursor:pointer;
+}
+
+#mainSignalGraph{
+  position: absolute;
+  top:825px;
+  left:10px;
+  /* border: 1px solid black; */
+}
+
+/* #filtration{
+  display:flex;
+  flex-direction: row;
+} */
+
+#filtedSignalGraph{
+  position:absolute;
+  top: 825px;
+  left:720px;
+  /* border: 1px solid black; */
+}
+
+
+#filter_progress_slider{
+  -webkit-appearance: none;
+  margin-right: 15px;
+  width: 220px;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
+  background-image: linear-gradient(gray, gray);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position:absolute;
+  top:1300px;
+  left:725px;
+}
+
+#filter_progress_slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 40%;
+  background: black;
+  cursor: pointer;
+  box-shadow: 0 0 2px 0 #555;
+}
+
+#filter_progress_slider::-webkit-slider-runnable-track  {
+  -webkit-appearance: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+
+.allpass_orginal{
+  background-color: black;
+	border-radius:1px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	font-weight:bold;
+  font-style: italic;
+  text-align: center;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+  margin-bottom: 10px;
+  width:120px;
+  height:30px;
+  position: absolute;
+}
+
+#apply-filter{
+
+  top:1280px;
+  left:10px;
+}
+
+#phase-correction{
+  top:1280px;
+  left:200px;
+}
