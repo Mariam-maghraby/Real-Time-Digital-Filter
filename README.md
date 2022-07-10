@@ -26,7 +26,7 @@ Graphical plots for the magnitude response and the phase response are automatica
 
 ![](App-photos/AllPass-Library&itsResponses.png)
 
-### The user can Apply the filter on any signal to filtered in real-time (point by point)
+### The user can apply the filter on any signal to be filtered in real-time (point by point)
 ➢A graph show the time progress of the original signal and another graph to show the time progress of the filtered signal 
 (i.e. upon applying the difference equation on the points of the original signal one by one).
 <br>
